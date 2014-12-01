@@ -6,6 +6,10 @@ randomizer.getNames('1zlqvP1NIlx1mVQ2ruyARQyzuSLIWvHX2xz_r0bMbAiY', function(dat
 	names = data
 	console.log("Data randomized")
 })
+
+
+
+
 // Setup the ready route, and emit talk event.
 app.io.route('ready', function(req) {
 	var givers = [];
