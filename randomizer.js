@@ -1,6 +1,3 @@
-console.log("Don't forget to republish before running for updated list (or add auth stuff")
-
-
 var GoogleSpreadsheet = require("google-spreadsheet");
 var my_sheet = new GoogleSpreadsheet('1zlqvP1NIlx1mVQ2ruyARQyzuSLIWvHX2xz_r0bMbAiY');
 var names = []
@@ -11,13 +8,8 @@ my_sheet.getRows( 1, function(err, row_data){
         var person = new Person(name[1], name[2])
         names.push(person)
     }
-    if(names.length%2 == 0){
-        names = assignAllNames(names)
-        console.log(names)
-    }
-    else{
-        console.log("Won't work, need even number of people")
-    }
+    names = assignAllNames(names)
+    console.log(names)
 })
 var Person = function(firstName, lastName, givingTo){
     this.first = firstName
