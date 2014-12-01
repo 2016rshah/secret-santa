@@ -1,16 +1,19 @@
 var GoogleSpreadsheet = require("google-spreadsheet");
-var my_sheet = new GoogleSpreadsheet('1zlqvP1NIlx1mVQ2ruyARQyzuSLIWvHX2xz_r0bMbAiY');
-var names = []
-my_sheet.getRows( 1, function(err, row_data){
-    for(var i = 0; i<row_data.length; i++){
-        var entry = row_data[i].content.split(",")
-        var name = entry[0].split(" ")
-        var person = new Person(name[1], name[2])
-        names.push(person)
-    }
-    names = assignAllNames(names)
-    console.log(names)
-})
+var main = function(spreadSheetId, callback){
+    var my_sheet = new GoogleSpreadsheet(spreadSheetId);
+    var names = []
+    my_sheet.getRows( 1, function(err, row_data){
+        for(var i = 0; i<row_data.length; i++){
+            var entry = row_data[i].content.split(",")
+            var name = entry[0].split(" ")
+            var person = new Person(name[1], name[2])
+            names.push(person)
+        }
+        names = assignAllNames(names)
+        console.log(names)
+        callback(names);
+    })
+}
 var Person = function(firstName, lastName, givingTo){
     this.first = firstName
     this.last = lastName
@@ -57,4 +60,12 @@ var checkWorks = function(array){
         }
     };
     return true
+}
+module.exports = {
+    getNames : function(spreadSheetId, callback){
+        main(spreadSheetId, function(data){
+            callback(data)
+
+        })
+    }
 }

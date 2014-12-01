@@ -1,0 +1,34 @@
+<html>
+<body>
+<ul id = "givers"></ul>
+<ul id = "recievers"></ul>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	io = io.connect()
+
+	// Emit ready event.
+	io.emit('ready') 
+
+	// Listen for the talk event.
+	io.on('givers', function(data) {
+		data = data.message
+	    for(var i = 0; i<data.length; i++){
+	    	var node = document.createElement("LI");                 // Create a <li> node
+			var textnode = document.createTextNode(data[i]);         // Create a text node
+			node.appendChild(textnode);                              // Append the text to <li>
+			document.getElementById("givers").appendChild(node);     // Append <li> to <ul> with 
+	    }
+	}) 
+	io.on('recivers', function(data){
+		data = data.message
+		for(var i = 0; i<data.length; i++){
+			var node = document.createElement("LI");                 // Create a <li> node
+			var textnode = document.createTextNode(data[i]);         // Create a text node
+			node.appendChild(textnode);                              // Append the text to <li>
+			document.getElementById("recievers").appendChild(node);     // Append <li> to <ul> with 
+		}
+	}) 
+
+</script>
+</html>
