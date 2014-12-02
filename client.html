@@ -1,36 +1,26 @@
 <html>
 	<body>
-		<ul id = "givers"></ul>
-		<ul id = "recievers"></ul>
+		<input type = "text" id = "docId" value = "1zlqvP1NIlx1mVQ2ruyARQyzuSLIWvHX2xz_r0bMbAiY">
+		<button id = "sub">Submit</button>
+		<ul id = "list"></ul>
 	</body>
-
-	
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
 		io = io.connect()
-
-		// Emit ready event.
-		io.emit('ready') 
-
-		// Listen for the talk event.
-		io.on('givers', function(data) {
+		document.getElementById("sub").addEventListener("click", function(){
+			id = document.getElementById("docId").value
+			io.emit("gotDocumentId", id)
+		}, false)
+		io.on("giversAndRecievers", function(data){
 			data = data.message
-		    for(var i = 0; i<data.length; i++){
-		    	var node = document.createElement("LI");                 // Create a <li> node
-				var textnode = document.createTextNode(data[i]);         // Create a text node
-				node.appendChild(textnode);                              // Append the text to <li>
-				document.getElementById("givers").appendChild(node);     // Append <li> to <ul> with 
-		    }
-		}) 
-		io.on('recivers', function(data){
-			data = data.message
-			for(var i = 0; i<data.length; i++){
-				var node = document.createElement("LI");                 // Create a <li> node
-				var textnode = document.createTextNode(data[i]);         // Create a text node
-				node.appendChild(textnode);                              // Append the text to <li>
-				document.getElementById("recievers").appendChild(node);     // Append <li> to <ul> with 
+			givers = data[0]
+			recievers = data[1]
+			for(var i = 0; i<givers.length; i++){
+				var node = document.createElement("LI")
+				var textnode = document.createTextNode(givers[i]+"-----------giving to-----------"+recievers[i])
+				node.appendChild(textnode)
+				document.getElementById("list").appendChild(node)
 			}
-		}) 
-
+		})
 	</script>
 </html>
