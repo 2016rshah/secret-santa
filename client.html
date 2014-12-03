@@ -15,6 +15,15 @@
 			data = data.message
 			givers = data[0]
 			recievers = data[1]
+			console.log("Givers", givers)
+			console.log("Recievers", recievers)
+			document.getElementById("list").innerHTML = "";
+
+			var node = document.createElement("LI")
+			var textnode = document.createTextNode("-----------------POSSIBLE OPTION------------------")
+			node.appendChild(textnode)
+			document.getElementById("list").appendChild(node)
+
 			for(var i = 0; i<givers.length; i++){
 				var node = document.createElement("LI")
 				var textnode = document.createTextNode(givers[i]+"-----------giving to-----------"+recievers[i])
