@@ -6,13 +6,13 @@ app.io.route('gotNames', function(req) {
 	console.log("got here")
 	var givers = [];
 	for(var i = 0; i<names.length; i++){
-		givers.push(names[i].first + " " + names[i].last)
+		givers.push(names[i].person)
 	}
 	console.log("Givers: ", givers)
 	var recievers = [];
 	for(var i = 0; i<names.length; i++){
 		reciever = names[i].givingTo
-		recievers.push(reciever.first+ " " + reciever.last)
+		recievers.push(reciever.person)
 	}
     req.io.emit("giversAndRecievers", {
     	message: [givers, recievers]
