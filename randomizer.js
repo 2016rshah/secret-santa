@@ -14,7 +14,7 @@ var main = function(spreadSheetId, callback){
         }
         for(var i = 0; i<row_data.length; i++){
             var entry = row_data[i].content.split(",")
-            var name = entry[0].replace("whatisyourname: ", "")
+            var name = entry[0].split(":")[1]
             names.push({"person":name})
         }
         names = assignAllNames(names)
