@@ -46,7 +46,8 @@ function shuffle(array) {
 }
 var checkWorks = function(array){
     for (var i = 0; i < array.length; i++) {
-        if(array[i].person == array[i].givingTo){
+        console.log(array[i])
+        if(array[i].person == array[i].givingTo.person){
             return false
         }
     };
