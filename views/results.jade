@@ -1,0 +1,18 @@
+html
+  head
+    title!= Randomizer
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css")
+    link(rel="stylesheet", href="/custom.css")
+  body
+    .container
+      h1 Results
+      a(class='button', href='/') Try another spreadsheet
+      .row
+        .six.columns 
+          ul
+            each val in gs
+              li= val
+        .six.columns
+          ul
+            each val in rs
+              li= val

@@ -1,11 +1,20 @@
 var GoogleSpreadsheet = require("google-spreadsheet");
 var main = function(spreadSheetId, callback){
+    console.log(spreadSheetId)
     var my_sheet = new GoogleSpreadsheet(spreadSheetId);
+    my_sheet.getRows( 1, function(err, row_data){
+        console.log( 'pulled in '+row_data.length + ' rows');
+        console.log(row_data[0])
+    });
+
     var names = []
     my_sheet.getRows( 1, function(err, row_data){
+        if(err){
+            throw err
+        }
         for(var i = 0; i<row_data.length; i++){
             var entry = row_data[i].content.split(",")
-            var name = entry[0].replace("name: ", "")
+            var name = entry[0].replace("whatisyourname: ", "")
             names.push({"person":name})
         }
         names = assignAllNames(names)
