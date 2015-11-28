@@ -14,6 +14,7 @@ Taken down names through a google form for a secret santa or some sort of simila
  - Automatically randomize names
  - Ensure there are no collisions (you are never matched with yourself)
  - Copy and paste the resulting column of names into your spreadsheet and the names will match up
+ - Refresh for a new set of pairings
 
 ##Preparing your google doc
  - Click File -> Publish To Web -> Publish
