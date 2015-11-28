@@ -2,10 +2,6 @@ var GoogleSpreadsheet = require("google-spreadsheet");
 var main = function(spreadSheetId, callback){
     console.log(spreadSheetId)
     var my_sheet = new GoogleSpreadsheet(spreadSheetId);
-    my_sheet.getRows( 1, function(err, row_data){
-        console.log( 'pulled in '+row_data.length + ' rows');
-        console.log(row_data[0])
-    });
 
     var names = []
     my_sheet.getRows( 1, function(err, row_data){
@@ -46,7 +42,7 @@ function shuffle(array) {
 }
 var checkWorks = function(array){
     for (var i = 0; i < array.length; i++) {
-        console.log(array[i])
+        // console.log(array[i])
         if(array[i].person == array[i].givingTo.person){
             return false
         }
