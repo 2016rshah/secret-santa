@@ -2,9 +2,6 @@
 
 Taken down names through a google form for a secret santa or some sort of similar game? Randomize them automatically!
 
-![Index page](images/index.png)
-![Results page](images/randomized.png)
-
 ##Use cases
  - Secret Santa
  - Sock Wars
