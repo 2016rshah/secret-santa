@@ -23,6 +23,10 @@ html
         })
 
         function parseLink(str){
+          //input: https://docs.google.com/spreadsheets/d/1sXcD3mtoULKMqpFnl2I7uwobN2LzHHQTJxpizkUVIEk/pubhtml
+          //output: 1sXcD3mtoULKMqpFnl2I7uwobN2LzHHQTJxpizkUVIEk
+          str = str.replace(/.*d\//, "")
+          str = str.replace(/\/.*/, "")
           return str
         }
 
