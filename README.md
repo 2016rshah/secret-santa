@@ -14,8 +14,8 @@ Taken down names through a google form for a secret santa or some sort of simila
  - Refresh for a new set of pairings
 
 ##Preparing your google doc
- - Click File -> Publish To Web -> Publish
- - Open the link you are given in a new tab and copy the entire URL that you are given
+ - Click File -> Publish To Web -> Publish -> OK
+ - Copy the resulting URL that you are given
 
 ##Usage
  - Make sure you have [NodeJS](https://nodejs.org/en/) installed
