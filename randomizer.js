@@ -13,8 +13,12 @@ var main = function(spreadSheetId, callback){
             var name = entry[0].split(":")[1]
             names.push({"person":name})
         }
-        names = assignAllNames(names)
-        callback(names);
+        if(names.length > 1){
+            names = assignAllNames(names)
+        }
+        else{
+            callback("error");
+        }
     })
 }
 var assignAllNames = function(names){

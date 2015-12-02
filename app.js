@@ -9,6 +9,10 @@ app.get('/randomize/:documentId', function(req, res){
 	//Sock Wars: 16kn25KuOApNV-qptCcpDHSotEmlhawMLj5k94ePKGMQ
 	//Secret Santa: 1zlqvP1NIlx1mVQ2ruyARQyzuSLIWvHX2xz_r0bMbAiY
 	randomizer.getNames(req.params.documentId, function(data){
+		if(data == "error"){
+			res.render('error')
+			return -1;
+		}
 		var names = data
 		var gs = []
 		var rs = []
