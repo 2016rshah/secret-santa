@@ -8,15 +8,19 @@ var main = function(spreadSheetId, callback){
         if(err){
             throw err
         }
+        console.log("recieved " + row_data.length + " rows from google spreadsheet")
         for(var i = 0; i<row_data.length; i++){
             var entry = row_data[i].content.split(",")
             var name = entry[0].split(":")[1]
             names.push({"person":name})
         }
         if(names.length > 1){
+            console.log("enough names to start randomizing")
             names = assignAllNames(names)
+            callback(names)
         }
         else{
+            console.log("not enough names to randomize")
             callback("error");
         }
     })
@@ -28,10 +32,13 @@ var assignAllNames = function(names){
         names[i].givingTo = names2[i]
     }
     if(checkWorks(names)){
+        console.log("returning names")
         return names
     }
-    else
+    else{
+        console.log("Randomization didn't work, recursing")
         return assignAllNames(names)
+    }
 }
 function shuffle(array) {
   var copy = [], n = array.length, i;
@@ -51,6 +58,7 @@ var checkWorks = function(array){
             return false
         }
     };
+    console.log("randomizing worked")
     return true
 }
 module.exports = {
