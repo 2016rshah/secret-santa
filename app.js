@@ -16,11 +16,13 @@ app.get('/randomize/:documentId', function(req, res){
 		var names = data
 		var gs = []
 		var rs = []
+		var es = []
 		for(var i = 0; i<names.length; i++){
 			gs.push(names[i].person)
 			rs.push(names[i].givingTo.person)
+			es.push(names[i].givingTo.email)
 		}
-		res.render('results', {"rs":rs, "gs":gs});
+		res.render('results', {"rs":rs, "gs":gs, "es":es});
 	})
 })
 app.get('/', function(req, res) {

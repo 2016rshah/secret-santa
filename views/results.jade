@@ -14,5 +14,5 @@ html
               li= val
         .six.columns
           ul
-            each val in rs
-              li= val
+            each val, i in rs
+              li= val + " (" + es[i] + " )"

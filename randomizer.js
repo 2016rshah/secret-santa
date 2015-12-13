@@ -12,7 +12,8 @@ var main = function(spreadSheetId, callback){
         for(var i = 0; i<row_data.length; i++){
             var entry = row_data[i].content.split(",")
             var name = entry[0].split(":")[1]
-            names.push({"person":name})
+            var email = entry[1].split(":")[1]
+            names.push({"person":name, "email":email})
         }
         if(names.length > 1){
             console.log("enough names to start randomizing")
